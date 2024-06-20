@@ -72,7 +72,7 @@ objects:
               secretKeyRef:
                 key: REDIS_PASSWORD
                 name: ${REDIS_SERVICE_NAME}
-          image: " "
+          image: image-registry.openshift-image-registry.svc:5000/openshift/redis@sha256:6464907ccf3cf2a99e66ddddff1916dc40076dc6d905cab876207f8d86d304c1
           imagePullPolicy: IfNotPresent
           livenessProbe:
             initialDelaySeconds: 30
