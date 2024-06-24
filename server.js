@@ -100,9 +100,9 @@ function setCachedUsers(users) {
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const result = await pgPool.query('SELECT * FROM public-users');
+    const result = await pgPool.query('SELECT * FROM users');
     const users = result.rows;
-    res.render('index', { public-users });
+    res.render('index', { users });
   } catch (error) {
     console.error('PostgreSQL Error:', error);
     res.status(500).send('Internal Server Error');
