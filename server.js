@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 // PostgreSQL configuration
 const pgPool = new Pool({
   user: process.env.PG_USER,
-  host: process.env.PG_HOST || 'postgresql',
+  host: process.env.PG_HOST || 'psql-vystar.postgres.database.azure.com',
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT || 5432,
@@ -100,9 +100,9 @@ function setCachedUsers(users) {
 // Routes
 app.get('/', async (req, res) => {
   try {
-    const result = await pgPool.query('SELECT * FROM users');
+    const result = await pgPool.query('SELECT * FROM public-users');
     const users = result.rows;
-    res.render('index', { users });
+    res.render('index', { public-users });
   } catch (error) {
     console.error('PostgreSQL Error:', error);
     res.status(500).send('Internal Server Error');
