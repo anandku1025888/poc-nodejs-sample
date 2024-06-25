@@ -9,7 +9,7 @@ const port = process.env.PORT || 3000;
 // PostgreSQL configuration
 const pgPool = new Pool({
   user: process.env.PG_USER,
-  host: process.env.PG_HOST || 'postgresql',
+  host: process.env.PG_HOST || 'pgsql-vystar.postgres.database.azure.com',
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT || 5432,
