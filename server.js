@@ -13,6 +13,9 @@ const pgPool = new Pool({
   database: process.env.PG_DATABASE,
   password: process.env.PG_PASSWORD,
   port: process.env.PG_PORT || 5432,
+  ssl: {
+    rejectUnauthorized: false  // This will allow self-signed certificates. For production, you should use a CA signed certificate.
+  }
 });
 
 // Redis configuration
