@@ -32,9 +32,8 @@ const redisClient = redis.createClient({
         return new Error('Retry attempts exhausted');
       }
       return Math.min(retries * 100, 3000);
-    },
-     keepAlive: 10000,
-  },
+    }
+  }
 });
 
 async function connectToDatabase() {
