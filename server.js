@@ -20,9 +20,12 @@ const pgPool = new Pool({
 
 // Redis configuration
 const redisClient = redis.createClient({
-  host: process.env.REDIS_HOST || 'redis',
-  port: process.env.REDIS_PORT || 6379,
+  host: process.env.REDIS_HOST || 'vystar.redis.cache.windows.net',
+  port: process.env.REDIS_PORT || 6380,
   password: process.env.REDIS_PASSWORD,
+  ssl: {
+    rejectUnauthorized: false  // This will allow self-signed certificates. For production, you should use a CA signed certificate.
+  }
 });
 
 async function connectToDatabase() {
