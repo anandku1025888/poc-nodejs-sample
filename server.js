@@ -24,8 +24,8 @@ const redisClient = redis.createClient({
   port: process.env.REDIS_PORT || 6380,
   password: process.env.REDIS_PASSWORD,
   socket: {
-    tls: true,
-    rejectUnauthorized: true // This should be adjusted based on your security requirements
+    tls: false,
+    rejectUnauthorized: false // This should be adjusted based on your security requirements
   }
 });
 
