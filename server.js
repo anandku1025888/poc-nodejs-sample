@@ -26,13 +26,6 @@ const redisClient = redis.createClient({
   socket: {
     tls: true,
     rejectUnauthorized: true // This should be adjusted based on your security requirements
-    reconnectStrategy: (retries) => {
-      // Exponential backoff with a maximum of 10 retries
-      if (retries >= 10) {
-        return new Error('Retry attempts exhausted');
-      }
-      return Math.min(retries * 100, 3000);
-    }
   }
 });
 
