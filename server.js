@@ -25,8 +25,16 @@ const redisClient = redis.createClient({
   password: process.env.REDIS_PASSWORD,
   socket: {
     tls: true,
-    rejectUnauthorized: false // This should be adjusted based on your security requirements
-  }
+    rejectUnauthorized: true // This should be adjusted based on your security requirements
+    reconnectStrategy: (retries) => {
+      // Exponential backoff with a maximum of 10 retries
+      if (retries >= 10) {
+        return new Error('Retry attempts exhausted');
+      }
+      return Math.min(retries * 100, 3000);
+    },
+     keepAlive: 10000,
+  },
 });
 
 async function connectToDatabase() {
